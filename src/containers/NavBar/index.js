@@ -226,8 +226,8 @@ class NavBar extends Component {
                 if (window.keplr.experimentalSuggestChain) {
                     try {
                         await window.keplr.experimentalSuggestChain({
-                            chainId: "devnet-2",
-                            chainName: "Celestia Devnet-2",
+                            chainId: "test",
+                            chainName: "Celestia Test(net)",
                             rpc: "https://<rpc_celestia_node_address>",
                             rest: "https://<rest_celestia_node_address>",
                             walletUrlForStaking	: "https://staking.celestia.observer",
@@ -235,34 +235,34 @@ class NavBar extends Component {
                                 coinType: 118,
                             },
                             bech32Config: {
-                                bech32PrefixAccAddr: "celes",
-                                bech32PrefixAccPub: "celespub",
-                                bech32PrefixValAddr: "celesvaloper",
-                                bech32PrefixValPub: "celesvaloperpub",
-                                bech32PrefixConsAddr: "celesvalcons",
-                                bech32PrefixConsPub: "celesvalconspub",
+                                bech32PrefixAccAddr: "celestia",
+                                bech32PrefixAccPub: "celestiapub",
+                                bech32PrefixValAddr: "celestiavaloper",
+                                bech32PrefixValPub: "celestiavaloperpub",
+                                bech32PrefixConsAddr: "celestiavalcons",
+                                bech32PrefixConsPub: "celestiavalconspub",
                             },
                             currencies: [
                                 {
-                                    coinDenom: "celes",
-                                    coinMinimalDenom: "celes",
-                                    coinDecimals: 0,
-                                    coinGeckoId: "celes",
+                                    coinDenom: "tia",
+                                    coinMinimalDenom: "utia",
+                                    coinDecimals: 6,
+                                    coinGeckoId: "tia",
                                 },
                             ],
                             feeCurrencies: [
                                 {
-                                    coinDenom: "celes",
-                                    coinMinimalDenom: "celes",
-                                    coinDecimals: 0,
-                                    coinGeckoId: "celes",
+                                    coinDenom: "tia",
+                                    coinMinimalDenom: "utia",
+                                    coinDecimals: 6,
+                                    coinGeckoId: "tia",
                                 },
                             ],
                             stakeCurrency: {
-                                coinDenom: "celes",
-                                coinMinimalDenom: "celes",
-                                coinDecimals: 0,
-                                coinGeckoId: "celes",
+                                coinDenom: "tia",
+                                coinMinimalDenom: "utia",
+                                coinDecimals: 6,
+                                coinGeckoId: "tia",
                             },
                             coinType: 118,
                             gasPriceStep: {
