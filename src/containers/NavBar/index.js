@@ -97,7 +97,7 @@ class NavBar extends Component {
     }
 
     componentDidUpdate (pp, ps, ss) {
-        if ((!pp.proposals.length && (pp.proposals !== this.props.proposals) &&
+        if ((pp.proposals && !pp.proposals.length && (pp.proposals !== this.props.proposals) &&
             this.props.proposals && this.props.proposals.length) ||
             ((pp.address !== this.props.address) && (pp.address === ''))) {
             this.props.proposals.map((val) => {
@@ -226,8 +226,8 @@ class NavBar extends Component {
                 if (window.keplr.experimentalSuggestChain) {
                     try {
                         await window.keplr.experimentalSuggestChain({
-                            chainId: "test",
-                            chainName: "Celestia Test(net)",
+                            chainId: "mamaki",
+                            chainName: "Celestia Testnet",
                             rpc: "https://<rpc_celestia_node_address>",
                             rest: "https://<rest_celestia_node_address>",
                             walletUrlForStaking	: "https://staking.celestia.observer",

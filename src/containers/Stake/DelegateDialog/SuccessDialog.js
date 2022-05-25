@@ -163,7 +163,7 @@ SuccessDialog.propTypes = {
     validatorList: PropTypes.arrayOf(
         PropTypes.shape({
             operator_address: PropTypes.string,
-            status: PropTypes.number,
+            status: PropTypes.string,
             description: PropTypes.shape({
                 moniker: PropTypes.string,
             }),

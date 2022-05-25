@@ -14,7 +14,7 @@ import ConnectButton from '../NavBar/ConnectButton';
 import classNames from 'classnames';
 
 class Table extends Component {
-    randomNoRepeats (array) {
+    randomNoRepeats (array = []) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [array[i], array[j]] = [array[j], array[i]];
@@ -61,17 +61,19 @@ class Table extends Component {
             label: 'Status',
             options: {
                 sort: false,
-                customBodyRender: (value) => (
-                    <div
-                        className={classNames('status', value.jailed ? 'red_status' : '')}
-                        title={value.status === 1 ? 'unbonding'
-                            : value.status === 2 ? 'unbonded'
-                                : value.status === 3 ? 'active' : ''}>
-                        {value.status === 1 ? 'unbonding'
-                            : value.status === 2 ? 'unbonded'
-                                : value.status === 3 ? 'active' : ''}
-                    </div>
-                ),
+                customBodyRender: (value) => {
+                    return (
+                        <div
+                            className={classNames('status', value.jailed ? 'red_status' : '')}
+                            title={value.status === 'BOND_STATUS_UNBONDING' ? 'unbonding'
+                                : value.status === 'BOND_STATUS_UNBONDED' ? 'unbonded'
+                                    : value.status === 'BOND_STATUS_BONDED' ? 'active' : ''}>
+                            {value.status === 'BOND_STATUS_UNBONDING' ? 'unbonding'
+                                : value.status === 'BOND_STATUS_UNBONDED' ? 'unbonded'
+                                    : value.status === 'BOND_STATUS_BONDED' ? 'active' : ''}
+                        </div>
+                    );
+                },
             },
         }, {
             name: 'voting_power',
@@ -100,9 +102,9 @@ class Table extends Component {
             options: {
                 sort: false,
                 customBodyRender: (item) => {
-                    let value = this.props.delegations.find((val) =>
-                        (val.delegation && val.delegation.validator_address) === item.operator_address);
-                    value = value ? value.balance && value.balance.amount && value.balance.amount / 10 ** config.COIN_DECIMALS : null;
+                    // not sure if this is right, but close enough
+                    let value = Number(item.tokens);
+                    value = value / 10 ** config.COIN_DECIMALS;
 
                     return (
                         <div className={value ? 'tokens' : 'no_tokens'}>
@@ -171,7 +173,7 @@ Table.propTypes = {
     delegatedValidatorList: PropTypes.arrayOf(
         PropTypes.shape({
             operator_address: PropTypes.string,
-            status: PropTypes.number,
+            status: PropTypes.string,
             tokens: PropTypes.string,
             commission: PropTypes.shape({
                 commission_rates: PropTypes.shape({
@@ -197,7 +199,7 @@ Table.propTypes = {
     validatorList: PropTypes.arrayOf(
         PropTypes.shape({
             operator_address: PropTypes.string,
-            status: PropTypes.number,
+            status: PropTypes.string,
             tokens: PropTypes.string,
             commission: PropTypes.shape({
                 commission_rates: PropTypes.shape({

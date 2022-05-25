@@ -81,7 +81,7 @@ ValidatorSelectField.propTypes = {
     delegatedValidatorList: PropTypes.arrayOf(
         PropTypes.shape({
             operator_address: PropTypes.string,
-            status: PropTypes.number,
+            status: PropTypes.string,
             tokens: PropTypes.string,
             commission: PropTypes.shape({
                 commission_rates: PropTypes.shape({
@@ -99,7 +99,7 @@ ValidatorSelectField.propTypes = {
     validatorList: PropTypes.arrayOf(
         PropTypes.shape({
             operator_address: PropTypes.string,
-            status: PropTypes.number,
+            status: PropTypes.string,
             description: PropTypes.shape({
                 moniker: PropTypes.string,
             }),

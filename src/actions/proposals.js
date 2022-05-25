@@ -56,7 +56,7 @@ export const getProposals = (cb) => (dispatch) => {
         },
     })
         .then((res) => {
-            dispatch(fetchProposalsSuccess(res.data && res.data.result));
+            dispatch(fetchProposalsSuccess(res.data && res.data.proposals));
             cb(res.data && res.data.result);
         })
         .catch((error) => {

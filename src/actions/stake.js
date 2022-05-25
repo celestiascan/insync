@@ -60,7 +60,7 @@ export const getValidators = (cb) => (dispatch) => {
         },
     })
         .then((res) => {
-            dispatch(fetchValidatorsSuccess(res.data && res.data.result));
+            dispatch(fetchValidatorsSuccess(res.data && res.data.validators));
             cb(res.data && res.data.result);
         })
         .catch((error) => {
