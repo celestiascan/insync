@@ -66,7 +66,7 @@ export const getDelegations = (address) => (dispatch) => {
         },
     })
         .then((res) => {
-            dispatch(fetchDelegationsSuccess(res.data && res.data.result));
+            dispatch(fetchDelegationsSuccess(res.data && res.data.delegation_responses));
         })
         .catch((error) => {
             dispatch(fetchDelegationsError(
@@ -207,7 +207,7 @@ export const getUnBondingDelegations = (address) => (dispatch) => {
         },
     })
         .then((res) => {
-            dispatch(fetchUnBondingDelegationsSuccess(res.data && res.data.result));
+            dispatch(fetchUnBondingDelegationsSuccess(res.data && res.data.unbonding_responses));
         })
         .catch((error) => {
             dispatch(fetchUnBondingDelegationsError(
@@ -259,14 +259,15 @@ export const fetchRewards = (address) => (dispatch) => {
         .then((res) => {
             dispatch(fetchRewardsSuccess(res.data && res.data.result));
         })
-        .catch((error) => {
-            dispatch(fetchRewardsError(
+        .catch(() => {
+            /* dispatch(fetchRewardsError(
                 error.response &&
                 error.response.data &&
                 error.response.data.message
                     ? error.response.data.message
                     : 'Failed!',
-            ));
+            )); */
+            console.warn('Rewards currently not supported');
         });
 };
 
